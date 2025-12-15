@@ -1,0 +1,100 @@
+:root{--sidebar-width:320px}
+body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;margin:0;padding:0}
+.sidebar{width:var(--sidebar-width);min-height:calc(100vh - 56px);position:sticky;top:56px}
+main{background:#f8f9fa;min-height:calc(100vh - 56px);padding-bottom:0}
+.card-tile{
+	min-height:140px;
+	color:#fff;
+	border:none;
+	box-shadow:0 4px 15px rgba(0,0,0,0.2);
+	transition:transform 0.2s, box-shadow 0.2s;
+}
+.card-tile:hover{
+	transform:translateY(-5px);
+	box-shadow:0 8px 25px rgba(0,0,0,0.3);
+}
+.card-tile h5{color:#fff}
+.card-tile .text-muted{color:rgba(255,255,255,0.8)!important}
+.card-tile .text-success{color:#90ee90!important}
+.card-tile .text-primary{color:#add8e6!important}
+.card-tile .text-warning{color:#ffd700!important}
+
+/* Unique gradient for each station */
+.card-station-1{background:linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important}
+.card-station-2{background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important}
+.card-station-3{background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important}
+.card-station-4{background:linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important}
+.card-station-5{background:linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important}
+.card-station-6{background:linear-gradient(135deg, #30cfd0 0%, #330867 100%) !important}
+.card-station-7{background:linear-gradient(135deg, #a8edea 0%, #fed6e3 100%) !important}
+.card-station-8{background:linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%) !important}
+
+.status-green{color:green}
+.status-yellow{color:orange}
+.status-red{color:red}
+
+/* Colorful currency badge for TSh */
+.tsh-badge{
+	display:inline-block;
+	background:linear-gradient(90deg,#ff7a18,#af002d);
+	color:#fff;
+	padding:3px 8px;
+	border-radius:12px;
+	font-weight:600;
+	font-size:0.9rem;
+}
+
+/* Station total card inside tiles */
+.station-total{
+	border-radius:8px;
+	padding:6px 10px;
+	background:linear-gradient(135deg,#6f42c1,#20c997);
+	color:#fff;
+}
+
+/* Slightly different gradient on hover for card tiles */
+.card-tile:hover .station-total{
+	background:linear-gradient(135deg,#5a189a,#198754);
+}
+
+/* Dashboard summary cards (large colorful tiles) */
+.summary-row{margin-top:8px}
+.summary-card{color:#fff; border-radius:6px; padding:22px 18px; min-height:120px; display:flex; flex-direction:column; align-items:center; justify-content:center}
+.summary-icon{font-size:30px; opacity:0.95; margin-bottom:6px}
+.summary-number{font-size:40px; font-weight:700; line-height:1; margin-bottom:6px}
+.summary-label{font-size:16px; opacity:0.95}
+
+.bg-blue{background:linear-gradient(90deg,#0ea5ff,#007bff)}
+.bg-green{background:linear-gradient(90deg,#28a745,#20c997)}
+.bg-teal{background:linear-gradient(90deg,#20c997,#0dcaf0)}
+
+@media (max-width:767px){
+	.summary-number{font-size:32px}
+	.summary-card{min-height:100px;padding:16px}
+}
+
+/* Navbar spacing: increase right margin for brand */
+.navbar-brand{margin-right:60px}
+@media (max-width:767px){
+	.navbar-brand{margin-right:12px}
+}
+
+/* Limit search bar width in navbar to keep it compact */
+.navbar-search{max-width:320px}
+.navbar-search .input-group .form-control{min-width:0}
+
+@media (min-width:1200px){
+	/* slightly larger on very wide screens */
+	.navbar-search{max-width:400px}
+}
+
+@media (max-width:991px){
+	/* on medium screens the form becomes flexible again if needed */
+	.navbar-search{max-width:272px}
+}
+
+/* Nudge the search form 4px to the left from the right edge */
+@media (min-width:768px){
+	.navbar-search{margin-right:4px !important}
+}
+
