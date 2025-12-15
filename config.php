@@ -30,3 +30,8 @@ if (!function_exists('esc')) {
         return htmlspecialchars((string)$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 }
+
+// Include audit helper if not already included
+if (!function_exists('log_audit') && file_exists(__DIR__ . '/inc/audit_helper.php')) {
+    require_once __DIR__ . '/inc/audit_helper.php';
+}

@@ -56,3 +56,38 @@ CREATE TABLE IF NOT EXISTS `sales` (
   KEY (`station_id`),
   CONSTRAINT `fk_sales_station` FOREIGN KEY (`station_id`) REFERENCES `stations` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `audit_logs` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_name` VARCHAR(100) NOT NULL,
+  `action` VARCHAR(255) NOT NULL,
+  `module` VARCHAR(100) NOT NULL,
+  `ip_address` VARCHAR(45) DEFAULT NULL,
+  `status` VARCHAR(50) DEFAULT 'Success',
+  `details` TEXT DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_created_at` (`created_at`),
+  KEY `idx_user_name` (`user_name`),
+  KEY `idx_module` (`module`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT UNSIGNED NOT NULL UNIQUE,
+  `full_name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `phone` VARCHAR(50) DEFAULT NULL,
+  `address` VARCHAR(500) DEFAULT NULL,
+  `bio` TEXT DEFAULT NULL,
+  `job_title` VARCHAR(150) DEFAULT NULL,
+  `department` VARCHAR(100) DEFAULT NULL,
+  `profile_image` VARCHAR(255) DEFAULT NULL,
+  `password_hash` VARCHAR(255) DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_user_id` (`user_id`),
+  KEY `idx_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+

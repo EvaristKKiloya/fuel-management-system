@@ -1,6 +1,24 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
 require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/audit_helper.php';
+
+// Log page view for authenticated users
+if (!empty($_SESSION['username']) && !isset($_GET['no_audit'])) {
+    $currentPage = basename($_SERVER['PHP_SELF'], '.php');
+    $excludePages = ['logout']; // Don't log logout page view, it's logged separately
+    
+    if (!in_array($currentPage, $excludePages)) {
+        log_audit(
+            $pdo,
+            $_SESSION['username'],
+            AUDIT_ACTION_PAGE_VIEW,
+            ucfirst(str_replace('_', ' ', $currentPage)),
+            'Success',
+            'User accessed ' . $currentPage . ' page'
+        );
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">

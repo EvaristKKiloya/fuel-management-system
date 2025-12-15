@@ -1,0 +1,22 @@
+# Ignore backup files
+backups/
+*.sql
+
+# Ignore uploaded files
+uploads/profiles/
+uploads/*.jpg
+uploads/*.png
+uploads/*.gif
+
+# Ignore config with sensitive data (you'll need to create config.example.php)
+config.php
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime-*

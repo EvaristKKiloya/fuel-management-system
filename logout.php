@@ -1,4 +1,25 @@
 <?php
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/inc/audit_helper.php';
+
+if (session_status() === PHP_SESSION_NONE) session_start();
+
+// Log logout before destroying session
+if (!empty($_SESSION['username'])) {
+    log_audit(
+        $pdo,
+        $_SESSION['username'],
+        AUDIT_ACTION_LOGOUT,
+        'Authentication',
+        'Success',
+        'User logged out from IP: ' . ($_SERVER['REMOTE_ADDR'] ?? 'Unknown')
+    );
+}
+
+// Destroy session
+$_SESSION = [];
+session_destroy();
+
 require_once __DIR__ . '/inc/header.php';
 ?>
 <div class="container-fluid">
