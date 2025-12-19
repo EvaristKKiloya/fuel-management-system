@@ -1,0 +1,25 @@
+# .NET build outputs
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# NuGet
+packages/
+*.nupkg
+
+# Logs and temp
+*.log
+*.tmp
+
+# Build artifacts
+**/ref/
+**/refint/
